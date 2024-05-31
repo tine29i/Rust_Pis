@@ -1,14 +1,7 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+pub struct Matrix (pub(i32, i32), pub (i32, i32));
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub fn transpose(m: Matrix) -> Matrix {
+    let Matrix((a,b), (c,d))= m;
+    Matrix((a,c),(b, d))
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
 }
