@@ -1,14 +1,12 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub fn parts_sums(arr: &[u64]) -> Vec<u64> {
+    let mut new_arr = Vec::new();
+    let mut sum = 0;
+  for num in 0..arr.len() {
+    sum+= arr[num];
+    new_arr.push(sum);
+  }
+  new_arr.reverse();
+  new_arr.push(0);
+  return new_arr
+    
 }

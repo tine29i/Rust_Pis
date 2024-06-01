@@ -1,14 +1,10 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+pub fn inv_pyramid(v: String, i: u32) -> Vec<String> {
+    let mut pyramid = Vec::new();
+    for j in 1..i{
+        pyramid.push(format!("{}{}", " ".repeat(j as usize), v.repeat(j as usize)));
     }
+    for j in (1..=i).rev() {
+        pyramid.push(format!("{}{}", " ".repeat(j as usize), v.repeat(j as usize)));
+    }
+    pyramid
 }
