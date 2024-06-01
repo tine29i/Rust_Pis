@@ -1,14 +1,25 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+pub fn remove_letter_sensitive(s: &str, letter: char) -> String {
+    s.chars().filter(|&c| c != letter).collect()
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub fn remove_letter_insensitive(s: &str, letter: char) -> String {
+    s.chars()
+        .filter(|&c| c.to_ascii_lowercase() != letter.to_ascii_lowercase())
+        .collect()
+}
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub fn swap_letter_case(s: &str, letter: char) -> String {
+    s.chars()
+        .map(|c| {
+            if c.to_ascii_lowercase() == letter.to_ascii_lowercase() {
+                if c.is_uppercase() {
+                    c.to_ascii_lowercase()
+                } else {
+                    c.to_ascii_uppercase()
+                }
+            } else {
+                c
+            }
+        })
+        .collect()
 }
