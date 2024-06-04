@@ -6,4 +6,12 @@ pub fn multiply(m: Matrix, multiplier: i32) -> Matrix{
         (m.0 .0 * multiplier, m.0 .1 * multiplier),
         (m.1 .0 * multiplier, m.1 .1 * multiplier)
     )
+
+}
+pub fn multiply2(m: Matrix, multiplier: i32) -> Matrix{
+    let Matrix ((a, b),(c,d))=m;
+    Matrix(
+        (a * multiplier,b * multiplier),
+        (c * multiplier,d * multiplier)
+    )
 }
