@@ -1,4 +1,5 @@
 pub fn capitalize_first(input: &str) -> String {
+    
     let mut chars = input.chars();
     match chars.next() {
         None => String::new(),
