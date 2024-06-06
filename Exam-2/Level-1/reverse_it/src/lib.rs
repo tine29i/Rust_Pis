@@ -1,3 +1,3 @@
-pub fn reverse_it(input: &str) -> String {
-    input.chars().rev().collect()
+pub fn reverse_it(v: i32) -> String {
+    format!("{v:?}").chars().rev().collect()
 }

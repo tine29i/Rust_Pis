@@ -1,14 +1,19 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+pub fn count_factorial_steps(factorial: u64) -> u64 {
+    if factorial == 0 || factorial == 1 {
+        return 0;
+    }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+    let mut count = 0;
+    let mut product = 1;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+    while product < factorial {
+        count += 1;
+        product *= count;
+    }
+
+    if product == factorial {
+        count
+    } else {
+        0
     }
 }

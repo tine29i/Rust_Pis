@@ -1,14 +1,7 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+pub fn lucas_number(n: u32) -> u32 {
+    match n {
+        0 => 2,
+        1 => 1,
+        _ => lucas_number(n - 1) + lucas_number(n - 2),
     }
 }

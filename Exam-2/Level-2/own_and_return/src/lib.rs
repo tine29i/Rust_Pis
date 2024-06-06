@@ -1,14 +1,11 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+pub struct Film {
+    pub name: String,
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub fn read_film_name(film: &Film) -> &str {
+    &film.name
+}
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub fn take_film_name(film: Film) -> String {
+    film.name
 }
