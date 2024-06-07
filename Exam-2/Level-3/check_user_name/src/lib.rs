@@ -1,14 +1,33 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+pub enum AccessLevel {
+    Guest,
+    Normal,
+    Admin,
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub struct User {
+    name: String,
+    access_level: AccessLevel,
+}
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+impl User {
+    pub fn new(name: String, level: AccessLevel) -> User {
+        User {
+            name,
+            access_level: level,
+        }
+    }
+
+    pub fn send_name(&self) -> Option<&str> {
+        match self.access_level {
+            AccessLevel::Guest => None,
+            _ => Some(&self.name),
+        }
+    }
+}
+
+pub fn check_user_name(user: &User) -> (bool, &str) {
+    match user.send_name() {
+        Some(name) => (true, name),
+        None => (false, "ERROR: User is guest"),
     }
 }
