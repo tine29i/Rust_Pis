@@ -1,14 +1,24 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+pub mod library {
+    pub mod writers {
+        use crate::library::books::Book;
+
+        #[derive(Debug)]
+        pub struct Writer {
+            pub first_name: String,
+            pub last_name: String,
+            pub books: Vec<Book>,
+        }
+    }
+
+    pub mod books {
+        #[derive(Debug, Eq, Ord, PartialOrd, PartialEq)]
+        pub struct Book {
+            pub title: String,
+            pub year: u64,
+        }
+    }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub fn order_books(writer: &mut library::writers::Writer) {
+    writer.books.sort_by(|a, b| a.title.cmp(&b.title));
 }

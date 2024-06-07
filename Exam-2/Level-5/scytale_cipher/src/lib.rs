@@ -1,14 +1,17 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+pub fn scytale_cipher(message: String, i: u32) -> String {
+    let chars: Vec<char> = message.chars().collect();
+    let mut cipher = String::new();
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+    for j in 0..i {
+        let mut k = j;
+        while (k as usize) < chars.len() {
+            cipher.push(chars[k as usize]);
+            if ((k + i) % i == 0) && ((k as usize) + 1 < chars.len()) {
+                cipher.push(' ');
+            }
+            k += i;
+        }
     }
+
+    cipher
 }

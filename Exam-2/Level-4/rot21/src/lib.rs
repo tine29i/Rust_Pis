@@ -1,14 +1,11 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub fn rot21(input: &str) -> String {
+    input.chars().map(|c| {
+        if c.is_ascii_alphabetic() {
+            let base = if c.is_ascii_lowercase() { 'a' as u8 } else { 'A' as u8 };
+            let offset = (c as u8 - base + 21) % 26;
+            (base + offset) as char
+        } else {
+            c
+        }
+    }).collect()
 }
