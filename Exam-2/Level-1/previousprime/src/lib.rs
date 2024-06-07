@@ -8,7 +8,9 @@ pub fn is_prime(n: u64) -> bool {
 }
 
 pub fn prev_prime(nbr: u64) -> u64 {
-    
+    if nbr < 2 {
+        return 0;
+    }
     let mut prev = nbr - 1;
     while prev > 1 {
         if is_prime(prev) {
