@@ -27,15 +27,6 @@ pub struct OfficeFour {
 
 impl OfficeOne {
     pub fn get_document_id(&self) -> Result<u32, ErrorOffice> {
-        match &self.next_office {
-            Ok(office_two) => match &office_two.next_office {
-                Ok(office_three) => match &office_three.next_office {
-                    Ok(office_four) => office_four.document_id,
-                    Err(err) => Err(*err),
-                },
-                Err(err) => Err(*err),
-            },
-            Err(err) => Err(*err),
-        }
+        self.next_office?.next_office?.next_office?.document_id
     }
 }

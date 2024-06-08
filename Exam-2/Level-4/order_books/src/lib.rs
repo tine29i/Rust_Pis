@@ -1,6 +1,6 @@
 pub mod library {
     pub mod writers {
-        use crate::library::books::Book;
+        use super::books::Book;
 
         #[derive(Debug)]
         pub struct Writer {
@@ -20,5 +20,5 @@ pub mod library {
 }
 
 pub fn order_books(writer: &mut library::writers::Writer) {
-    writer.books.sort_by(|a, b| a.title.cmp(&b.title));
+    writer.books.sort();
 }
