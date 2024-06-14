@@ -1,14 +1,26 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+pub struct Matrix(pub Vec<Vec<i32>>);
+
+impl Matrix {
+    pub fn new(slice: &[&[i32]]) -> Self {
+        let matrix = slice.iter().map(|&row| row.to_vec()).collect();
+        Matrix(matrix)
+    }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+use std::fmt;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+impl fmt::Display for Matrix {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        for row in &self.0 {
+            write!(f, "(")?;
+            for (i, val) in row.iter().enumerate() {
+                if i != 0 {
+                    write!(f, " ")?;
+                }
+                write!(f, "{}", val)?;
+            }
+            write!(f, ")\n")?;
+        }
+        Ok(())
     }
 }
