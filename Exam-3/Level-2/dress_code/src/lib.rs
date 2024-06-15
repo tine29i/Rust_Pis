@@ -1,4 +1,4 @@
-tyuiopun#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum Jacket {
     Black,
     White,
