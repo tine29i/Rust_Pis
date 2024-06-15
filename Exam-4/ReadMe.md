@@ -1,6 +1,6 @@
-# Exam-Rust Solutions
+# Exam4-Rust_Solutions
 
-This repository contains solutions to various programming exercises in Rust.
+This repository contains solutions to various programming exercises in Rust_Final_Exam.
 
 ## Level 1
 
