@@ -4,7 +4,7 @@ This repository contains solutions to various programming exercises in Rust.
 
 ## Level 1
 
-- [count_factorial_steps](Exam-Rust/tree/main/Exam-4/Level-1/count_factorial_steps)
+- [count_factorial_steps](../Exam-4/Level-1/count_factorial_steps)
 - matrix_multiplication
 - min_and_max
 
