@@ -1,5 +1,3 @@
-use std::env;
-
 pub fn rpn(input: &str) {
     let mut stack = Vec::new();
     let tokens = input.split_whitespace();
