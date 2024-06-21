@@ -1,14 +1,29 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+use std::env;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+fn is_correctly_bracketed(expression: &str) -> bool {
+    let mut stack = Vec::new();
+    
+    for ch in expression.chars() {
+        match ch {
+            '(' | '[' | '{' => stack.push(ch),
+            ')' => {
+                if stack.pop() != Some('(') {
+                    return false;
+                }
+            },
+            ']' => {
+                if stack.pop() != Some('[') {
+                    return false;
+                }
+            },
+            '}' => {
+                if stack.pop() != Some('{') {
+                    return false;
+                }
+            },
+            _ => (),
+        }
     }
+    
+    stack.is_empty()
 }
