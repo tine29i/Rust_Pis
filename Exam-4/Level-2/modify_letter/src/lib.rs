@@ -1,29 +1,20 @@
-// modify_letter.rs
-
 pub fn remove_letter_sensitive(s: &str, letter: char) -> String {
-    s.chars().filter(|&c| c != letter).collect()
+    s.replace(letter, "")
 }
-
 pub fn remove_letter_insensitive(s: &str, letter: char) -> String {
-    let letter_lower = letter.to_lowercase().next().unwrap();
-    let letter_upper = letter.to_uppercase().next().unwrap();
-    s.chars()
-        .filter(|&c| c != letter_lower && c != letter_upper)
-        .collect()
+    s.replace(&letter.to_string().to_uppercase(), "")
+        .replace(&letter.to_string().to_lowercase(), "")
 }
-
 pub fn swap_letter_case(s: &str, letter: char) -> String {
-    let letter_lower = letter.to_lowercase().next().unwrap();
-    let letter_upper = letter.to_uppercase().next().unwrap();
-    s.chars()
-        .map(|c| {
-            if c == letter_lower {
-                letter_upper
-            } else if c == letter_upper {
-                letter_lower
-            } else {
-                c
-            }
-        })
-        .collect()
+    let mut text = String::new();
+    for i in s.chars() {
+        if i.to_string() == letter.to_string().to_uppercase() {
+            text.push_str(&letter.to_string().to_lowercase());
+        } else if i.to_string() == letter.to_string().to_lowercase() {
+            text.push_str(&letter.to_string().to_uppercase());
+        } else {
+            text.push_str(&i.to_string());
+        }
+    }
+    text
 }
